@@ -13,6 +13,18 @@ it is required for first time.
 
 **TODO**: define how circular dependencies are handled.
 
+# Syntax sugar
+
+## Infix and postfix notations
+
+The code inside `[]` is re-written using these rules:
+
+```elisp
+[x seconds] => (seconds x)   ;; 2 arguments can be used as a postfix notation
+[x < y]     => (< x y)       ;; 3 arguments are pure infix notation
+[x + y * 2] => (* (+ x y) 2) ;; Last infix expression result can be chained
+```
+
 # Compilation
 
 ## Compilation stages
