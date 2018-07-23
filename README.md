@@ -26,6 +26,24 @@ The code inside `[]` is re-written using these rules:
 ;; The last form is equivalent of [[x + y] * 2]
 ```
 
+## Dot-call syntax
+
+Functions and methods can be called using dot-call notation.
+
+```elisp
+;; object type is T (concrete or interface).
+(object.fn x y) => (invoke object fn x y)
+;; A. (T-fn object x y)         if T is concrete
+;; B. (virt-call fn object x y) if T is an interface
+```
+
+`invoke` behavior depends on the `object` static type.
+
+For concrete types, simple call is generated that invokes `${typename}-${fn}` function.
+> Example: if type is `point` and fn is `x`, `(pt.x)` is de-sugared into `(point-x)`.
+
+For interface types, virtual function call is generated.
+
 # Compilation
 
 ## Compilation stages
