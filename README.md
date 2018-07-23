@@ -2,7 +2,7 @@
 
 # Introduction
 
-The language specified in this document can be described by this traits:
+The language specified in this document can be described by these traits:
 
 * Statically and strongly typed (with the exception of `any` type).
 * Uses Lisp syntax, but makes several step asides in favor of code readability (see "syntax sugar" section).
