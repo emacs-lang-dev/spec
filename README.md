@@ -23,6 +23,7 @@ The code inside `[]` is re-written using these rules:
 [x seconds] => (seconds x)   ;; 2 arguments can be used as a postfix notation
 [x < y]     => (< x y)       ;; 3 arguments are a pure infix notation
 [x + y * 2] => (* (+ x y) 2) ;; Last infix expression result can be chained
+;; The last form is equivalent of [[x + y] * 2]
 ```
 
 # Compilation
