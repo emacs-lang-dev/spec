@@ -1,5 +1,13 @@
 > Version: early draft, unversioned
 
+# Introduction
+
+The language specified in this document can be described by this traits:
+
+* Statically and strongly typed (with the exception of `any` type).
+* Uses Lisp syntax, but makes several step asides in favor of code readability (see "syntax sugar" section).
+* Designed to be embedded into Emacs. Can call Emacs Lisp functions.
+
 # Packages
 
 All symbols are associated to some package, and exactly one package.
