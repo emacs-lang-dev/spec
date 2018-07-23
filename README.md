@@ -8,21 +8,6 @@ The language specified in this document can be described by these traits:
 * Uses Lisp syntax, but makes several step asides in favor of code readability (see "syntax sugar" section).
 * Designed to be embedded into Emacs. Can call Emacs Lisp functions.
 
-# Packages
-
-All symbols are associated to some package, and exactly one package.
-
-Files that follow `pkgname~filename` pattern define symbols for `pkgname`.
-Other files and code inside buffers that are not bound to any file define
-symbols for the global package.
-
-All files that are intended to be loaded by the Emacs when `import` is met
-should be under lookup path list. Every such path is scanned for filenames.
-This filename knowledge is later used to do a lazy package loading when
-it is required for first time.
-
-**TODO**: define how circular dependencies are handled.
-
 # Syntax sugar
 
 ## Infix and postfix notations
@@ -53,6 +38,22 @@ For concrete types, simple call is generated that invokes `${typename}-${fn}` fu
 > Example: if type is `point` and fn is `x`, `(pt.x)` is de-sugared into `(point-x)`.
 
 For interface types, virtual function call is generated.
+
+# Packages
+
+All symbols are associated to some package, and exactly one package.
+
+Files that follow `pkgname~filename` pattern define symbols for `pkgname`.
+Other files and code inside buffers that are not bound to any file define
+symbols for the global package.
+
+All files that are intended to be loaded by the Emacs when `import` is met
+should be under lookup path list. Every such path is scanned for filenames.
+This filename knowledge is later used to do a lazy package loading when
+it is required for first time.
+
+**TODO**: define how circular dependencies are handled.
+
 
 # Compilation
 
