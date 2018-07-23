@@ -1,3 +1,5 @@
+> Version: early draft, unversioned
+
 # Packages
 
 All symbols are associated to some package, and exactly one package.
