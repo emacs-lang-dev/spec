@@ -8,6 +8,23 @@ The language specified in this document can be described by these traits:
 * Uses Lisp syntax, but makes several step asides in favor of code readability (see "syntax sugar" section).
 * Designed to be embedded into Emacs. Can call Emacs Lisp functions.
 
+# Type system
+
+## Primitive types
+
+All type names are required to start from a capital letter.
+
+Types listed below map in 1-to-1 fashion with Emacs Lisp builtin types:
+
+* `Int` - 32-bit or 64-bit signed integer value.
+* `Float` - double precision (64-bit) floating point value.
+
+**TODO**: fill other types as soon as we're sure what else to include here.
+
+## Containers
+
+**TODO**: describe provided containers and their properties.
+
 # Syntax sugar
 
 ## Infix and postfix notations
@@ -53,7 +70,6 @@ This filename knowledge is later used to do a lazy package loading when
 it is required for first time.
 
 **TODO**: define how circular dependencies are handled.
-
 
 # Compilation
 
