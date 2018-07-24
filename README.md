@@ -8,6 +8,8 @@ The language specified in this document can be described by these traits:
 * Uses Lisp syntax, but makes several step asides in favor of code readability (see "syntax sugar" section).
 * Designed to be embedded into Emacs. Can call Emacs Lisp functions.
 
+**TODO**: make a decision between Lisp-1 and Lisp-2 model.
+
 # Type system
 
 ## Primitive types
