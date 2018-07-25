@@ -38,10 +38,10 @@
 ;; It's a preffered to write type expressions using [] notation.
 
 ;; There are other parametric builtin types, like:
-;;   (List T)
-;;   (Vector T)
-;;   (Map K V)
-;;   (Pair T1 T2)
+;;   (List T)     -- proper Lisp list (nil terminated in Emacs Lisp terms)
+;;   (Vector T)   -- Emacs Lisp `vector'
+;;   (Map K V)    -- Emacs Lisp hash table
+;;   (Pair T1 T2) -- Emacs Lisp `cons' object
 
 ;; For builtin containers, constructors that can infer result
 ;; type are provided.
