@@ -2,6 +2,8 @@
 
 
 ;; Define a new type `IntPair' with 2 fields: `x' and `y'. Both fields have a type of `Int'.
+;; For every field, getter and setter functions are generated.
+;; These functions are not exported and must be exported explicitly.
 (type IntPair a Int b Int)
 
 (do ;; Like `progn' in Emacs Lisp, block of forms.
@@ -12,20 +14,9 @@
       (print "${p1} ${p2}")        ;; Can use string interpolation for vars
     (panic "impossible"))          ;; `panic` is borrowed from Go
   ;; Fields are accessed using `get' special form:
-  (get p1 :a) ;; Returns p1 field named `x'
-  (get p1 :b) ;; Returns p1 field named `y'
+  (p1.a) ;; Calls `IntPair.a' (auto-generated getter)
+  (p1.b) ;; Calls `IntPair.b' (auto-generated getter)
   ;; `set` special form can assign new values to fields:
-  (set p1 x (get p1 :y))
-  (set p1 y (get p1 :x))
-  ;; Both `get' and `set' can only be used inside a package that
-  ;; defined the type being accessed. To provide exported getters and setters,
-  ;; define a function and export it.
+  (p1.a (p1.b)) ;; Calls `IntPair.a' 1-argument overloading (auto-generated setter)
+  (p1.b (p1.a)) ;; Calls `IntPair.b' 1-argument overloading (auto-generated setter)
   )
- 
-;; Return type is written after `->' token.
-(func IntPair.a (p IntPair -> Int)    (get p :a))
-(func IntPair.b (p IntPair -> Int)    (get p :b))
-;; For functions that are not intended to be used as expressions,
-;; void-like type is implied.
-(func IntPair.set_a (p IntPair a Int) (set p :a a))
-(func IntPair.set_b (p IntPair b Int) (set p :b b))
