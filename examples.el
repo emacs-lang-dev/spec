@@ -36,3 +36,36 @@
 ;;   ... and so on
 ;;
 ;; It's a preffered to write type expressions using [] notation.
+
+;; There are other parametric builtin types, like:
+;;   (List T)
+;;   (Vector T)
+;;   (Map K V)
+;;   (Pair T1 T2)
+
+;; For builtin containers, constructors that can infer result
+;; type are provided.
+;; These constructors live in a same symbol space as macros,
+;; so we can have both `map' function and `map' constructor.
+;; (map fn seq) calls a function, {map k v ...} refers to a constructor.
+;; It also makes it possible to have a local variable `any' while still
+;; being able to use {any x} constructor.
+(do
+  ;; `vector' result type is inferred to be `(Vector Int)'.
+  {vector 1 2 3}
+  ;; `vector' result type is inferred to be `(Vector Float)'.
+  {vector 1.0 2.0 3.0}
+  ;; `vector' result type is inferred to be `(Vector IntPair)'.
+  {vector (new IntPair) (new IntPair)}
+  ;; You can't use different element types.
+  ;; This is done to avoid errors that are hard to detect due to type inference
+  ;; and implicit nature of dynamic `Any' vars.
+  ;; If you want something like (List Any), be explicit.
+  {list {any 1} {any "2"} {any 3.0}}
+  ;; Note: even when using 1 literal in place where
+  ;; floating-point value is expected, one must write 1.0,
+  ;; otherwise it's a type error.
+  {map "k1" 1 "k2" 2} ;; (Map Str Int)
+  {pair 1 2}          ;; (Pair Int Int)
+  {pair 1 2.0}        ;; (Pair Int Float)
+  )
