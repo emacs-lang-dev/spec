@@ -20,3 +20,19 @@
   (p1.a (p1.b)) ;; Calls `IntPair.a' 1-argument overloading (auto-generated setter)
   (p1.b (p1.a)) ;; Calls `IntPair.b' 1-argument overloading (auto-generated setter)
   )
+
+;; Define a `fact' function of type `[(Int) -> Int]'.
+(func fact (Int x -> Int)
+  (if [n = 1]
+    1
+    [(fact [n - 1]) * n]))
+
+;; The [(Int) -> Int] is just a more readable way of writing (-> (Int) Int).
+;; Other examples of function types:
+;;   [() ->]        (-> ())        returns nothing and have no inputs
+;;   [(I) ->]       (-> (I))       returns nothing and have a single I argument
+;;   [(I) -> R]     (-> (I) R)     returns R and have a single I argument
+;;   [(I1 I2) -> R] (-> (I1 I2) R) returns R and have two arguments: I1 and I2
+;;   ... and so on
+;;
+;; It's a preffered to write type expressions using [] notation.
